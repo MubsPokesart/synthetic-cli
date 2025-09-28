@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthetic-cli"
+version = "0.1.0"
+requires-python = ">=3.8"
+dependencies = [
+    "typer[all]",
+    "textual==0.58.0",
+    "rich==13.7.1",
+    "questionary==2.0.1",
+]
+
+[project.scripts]
+synthetic-cli = "synthetic_cli.cli:app"
