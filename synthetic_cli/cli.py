@@ -23,9 +23,7 @@ app = typer.Typer(
 )
 
 # Add the 'generate' command to the main application.
-# The actual logic is delegated to the `generate` module.
 app.command()(generate.run_generation_flow)
-
 
 if __name__ == "__main__":
     app()

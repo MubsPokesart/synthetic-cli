@@ -1,22 +1,14 @@
-"""
-The Textual-based full-screen interactive configuration editor.
-
-This TUI guides the user through the configuration steps in a polished,
-full-screen interface, ensuring a valid configuration is created before
-proceeding.
-"""
-
 from textual.app import App, ComposeResult
 from textual.containers import Grid
-from textual.screen import Screen, ModalScreen
+from textual.screen import Screen
 from textual.widgets import (
-    Button, Header, Footer, Input, Label, RadioButtons, Static
+    Button, Header, Footer, Input, Label, RadioSet, Static
 )
 
 from synthetic_cli.config.models import GenerationConfig
 
 class WelcomeScreen(Screen):
-    """The initial screen to welcome the user."""
+    # ... (This class is unchanged)
     def compose(self) -> ComposeResult:
         yield Grid(
             Label("Welcome to the Synthetic Data Generator", id="title"),
@@ -42,7 +34,8 @@ class UseCaseScreen(Screen):
         yield Header()
         yield Grid(
             Label("Step 1: Select a Use Case"),
-            RadioButtons(
+            # UPDATED widget from RadioButtons to RadioSet
+            RadioSet(
                 "Text Classification",
                 "Text Summarization",
                 "Question Answering",
@@ -55,13 +48,13 @@ class UseCaseScreen(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "next":
-            radio_buttons = self.query_one(RadioButtons)
-            if radio_buttons.pressed_button:
-                self.app.config.use_case = radio_buttons.pressed_button.label
+            radio_set = self.query_one(RadioSet) # UPDATED class
+            if radio_set.pressed_button:
+                self.app.config.use_case = radio_set.pressed_button.label
                 self.app.push_screen(LabelsScreen())
 
 class LabelsScreen(Screen):
-    """Screen for defining data labels."""
+    # ... (This class is unchanged)
     def compose(self) -> ComposeResult:
         yield Header()
         yield Grid(
@@ -82,7 +75,7 @@ class LabelsScreen(Screen):
                 self.app.push_screen(APIKeyScreen())
 
 class APIKeyScreen(Screen):
-    """Screen for entering the API Key."""
+    # ... (This class is unchanged)
     def compose(self) -> ComposeResult:
         yield Header()
         yield Grid(
@@ -100,10 +93,10 @@ class APIKeyScreen(Screen):
                 self.app.config.api_key = key
                 self.app.exit(self.app.config)
 
-class ConfiguratorApp(App):
-    """A Textual app to configure data generation."""
 
-    CSS_PATH = None  # No external CSS for this minimal example
+class ConfiguratorApp(App):
+    # ... (This class is unchanged)
+    CSS_PATH = None
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
 
     def __init__(self):

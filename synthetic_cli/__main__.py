@@ -1,4 +1,3 @@
-
 """
 Allows the package to be run as a script via `python -m synthetic_cli`.
 This provides a consistent entrypoint for the command-line interface.
