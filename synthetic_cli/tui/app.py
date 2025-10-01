@@ -51,7 +51,6 @@ class GenerationScreen(Screen):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Grid(
-            Label("Generating Synthetic Data", id="title"),
             LoadingIndicator(),
             Static("Starting...", id="status"),
             id="dialog",
@@ -175,8 +174,7 @@ class APIKeyScreen(Screen):
 
 
 class ConfiguratorApp(App):
-    # ... (This class is unchanged)
-    CSS_PATH = None
+    CSS_PATH = "app.css"
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
 
     def __init__(self):
