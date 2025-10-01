@@ -18,6 +18,8 @@ class GenerationConfig:
     model: str = "gpt-4-turbo"
     api_key: Optional[str] = None
     output_path: str = "./synthetic_data.csv"
+    available_use_cases: List[str] = field(default_factory=lambda: ["Text Classification", "Data Generation", "Summarization"])
+    available_models: List[str] = field(default_factory=lambda: ["gpt-4-turbo", "claude-3-opus", "gemini-1.5-pro"])
 
     def is_valid(self) -> bool:
         """Checks if the core configuration fields are populated."""

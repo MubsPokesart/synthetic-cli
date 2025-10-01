@@ -59,10 +59,10 @@ This will start the Textual-based interface, which will walk you through setting
 
 ### Scripted Mode
 
-For automation, provide all necessary configuration as command-line arguments.
+For automation, provide all necessary configuration as command-line arguments to the `generate` command.
 
 ```bash
-synthetic-cli \
+synthetic-cli generate \
   --use-case "Text Classification" \
   --label "positive" \
   --label "negative" \
@@ -74,24 +74,8 @@ You can also set the API key via an environment variable for better security:
 
 ```bash
 export SYNTH_API_KEY="your-secret-api-key"
-synthetic-cli --use-case "Text Classification" --label "spam"
+synthetic-cli generate --use-case "Text Classification" --label "spam"
 ```
-
-## Troubleshooting
-
-Here are solutions to common issues that may arise during setup.
-
-### `ModuleNotFoundError: No module named 'synthetic_cli'`
-
-This error occurs if there is a mismatch between the directory name and the import statements.
-
-  * **Solution**: Ensure your package directory uses an **underscore** (`synthetic_cli`) and not a hyphen. Hyphens are invalid in Python import names. All `import` statements in the code must also use the underscore (`from synthetic_cli...`). The `pyproject.toml` should also point to the correct module name in the `[project.scripts]` section.
-
-### `ImportError: Package 'textual.widgets' has no class 'RadioButtons'`
-
-This is caused by an update to the Textual library.
-
-  * **Solution**: The `RadioButtons` widget was renamed to `RadioSet`. Open `synthetic_cli/tui/app.py` and change the import and usage from `RadioButtons` to `RadioSet`.
 
 ## Project Structure
 
