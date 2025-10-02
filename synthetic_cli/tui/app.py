@@ -1,7 +1,7 @@
 import time
 
 from textual.app import App, ComposeResult
-from textual.containers import Grid
+from textual.containers import Grid, Horizontal
 from textual.screen import Screen
 from textual.widgets import (
     Button, Header, Footer, Input, Label, RadioSet, Static, LoadingIndicator
@@ -91,8 +91,10 @@ class SummaryScreen(Screen):
         yield Grid(
             Label("Configuration Summary", id="title"),
             Static(self.get_summary_text(), id="summary"),
-            Button("Generate", variant="primary", id="generate"),
-            Button("Back", id="back"),
+            Horizontal(
+                Button("Generate", variant="primary", id="generate"),
+                Button("Back", id="back"),
+            ),
             id="dialog",
         )
         yield Footer()

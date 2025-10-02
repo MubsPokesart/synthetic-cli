@@ -1,32 +1,80 @@
+/*
+    A simple design system for the TUI.
+    Textual CSS uses a simplified syntax - no CSS variables supported.
+*/
+
 Screen {
+    background: $surface;
     align: center middle;
 }
 
-#dialog {
-    grid-size: 2;
-    grid-gutter: 1 2;
-    grid-rows: auto;
-    padding: 0 1;
-    width: 60;
-    height: auto;
-    border: thick $primary-lighten-2;
-    background: $surface;
-}
-
-#title {
-    column-span: 2;
-    text-align: center;
-    width: 100%;
+Button {
+    border: tall $primary;
+    background: $panel;
     color: $text;
+    padding: 0 2;
+    height: 3;
+    margin-bottom: 1;
 }
 
-#subtitle {
-    column-span: 2;
-    text-align: center;
-    width: 100%;
+Button:hover {
+    background: $primary;
     color: $text-muted;
 }
 
-Button {
+Button.-primary {
+    background: $primary;
+    color: $text-muted;
+}
+
+Input {
+    border: tall $primary;
+    background: $panel;
+    padding: 0 2;
+    height: 3;
+    margin-bottom: 1;
+}
+
+Input:focus {
+    border: tall $accent;
+}
+
+RadioSet {
+    margin-bottom: 1;
+}
+
+Static {
+    margin-bottom: 1;
+}
+
+#dialog {
+    padding: 2;
+    width: 80%;
+    max-width: 80;
+    border: thick $primary;
+    background: $panel;
+}
+
+#title {
+    text-align: center;
+    text-style: bold;
+}
+
+#subtitle {
+    text-align: center;
+    padding: 1;
+}
+
+#start {
     width: 100%;
+    margin-top: 1;
+}
+
+#status {
+    text-align: center;
+    padding: 1;
+}
+
+#summary {
+    padding: 1 0;
 }
