@@ -2,7 +2,7 @@
 
 from textual.app import ComposeResult
 from textual.screen import Screen
-from textual.widgets import Button, Header, Footer, Label, RadioSet
+from textual.widgets import Button, Header, Footer, Label, RadioSet, RadioButton
 from textual.containers import Grid
 
 from .labels import LabelsScreen
@@ -22,7 +22,7 @@ class UseCaseScreen(Screen):
 
     def on_mount(self) -> None:
         # Set default value
-        self.query_one(RadioSet).pressed_button = self.query_one(RadioSet).buttons[0]
+        self.query_one(RadioSet).query(RadioButton).first().value = True
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "next":
