@@ -3,14 +3,16 @@ The main entrypoint for the CLI application, powered by Typer.
 """
 
 import typer
-from synthetic_cli.commands import generate as generate_command
+from synthetic_cli.tui.app import ConfiguratorApp
 
 app = typer.Typer(no_args_is_help=False)
 
 @app.callback(invoke_without_command=True)
 def main(ctx: typer.Context):
+    """The main entry point for the CLI application."""
     if ctx.invoked_subcommand is None:
-        generate_command.run_generation_flow()
+        app = ConfiguratorApp()
+        app.run()
 
 if __name__ == "__main__":
     app()
