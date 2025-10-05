@@ -11,6 +11,11 @@ dependencies = [
     "textual==0.58.0",
     "rich==13.7.1",
     "questionary==2.0.1",
+    "pandas",
+    "huggingface_hub",
+    "transformers",
+    "torch",
+    "tensorflow",
 ]
 
 [project.scripts]
