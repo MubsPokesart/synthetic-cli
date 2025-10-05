@@ -2,3 +2,8 @@ typer
 textual
 rich
 questionary
+pandas
+huggingface_hub
+transformers
+torch
+tensorflow
