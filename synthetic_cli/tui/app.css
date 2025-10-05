@@ -1,6 +1,8 @@
 /*
     A simple design system for the TUI.
     Textual CSS uses a simplified syntax - no CSS variables supported.
+    Refer to the Textual documentation for more details:
+    https://textual.textualize.io/guide/CSS/
 */
 
 Screen {
