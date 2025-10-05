@@ -40,6 +40,7 @@ This project uses modern Python packaging. The recommended way to install it is 
     ```
 4.  Install the project and its dependencies:
     ```bash
+    pip install -r requirements.txt
     pip install -e .
     ```
 
